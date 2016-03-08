@@ -164,6 +164,10 @@ public class HomeActivity extends AppCompatActivity {
                 final EditText salary_field = new EditText(v.getContext());
                 salary_field.setHint("Salary");
                 layout.addView(salary_field);
+                final EditText id_field = new EditText(v.getContext());
+                id_field.setHint("id");
+                layout.addView(id_field);
+
                 alert.setView(layout);
                 alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
@@ -171,9 +175,8 @@ public class HomeActivity extends AppCompatActivity {
                         String name = name_field.getText().toString();
                         String age = age_field.getText().toString();
                         String salary = salary_field.getText().toString();
+                        String id = id_field.getText().toString();
                         if(!(name.equalsIgnoreCase("") || age.equalsIgnoreCase("") || salary.equalsIgnoreCase(""))) {
-                            int age_int = Integer.parseInt(age);
-                            int salary_int = Integer.parseInt(salary);
                             Toast.makeText(getApplicationContext(), name + " " + age + " " + salary + " " , Toast.LENGTH_LONG).show();
 
 
@@ -191,7 +194,7 @@ public class HomeActivity extends AppCompatActivity {
                             body.put("salary", salary);
 
                             //Defining the method
-                            api.postUser( body, new Callback<Employee>() {
+                            api.updateUser(id, body, new Callback<Employee>() {
                                 @Override
                                 public void success(Employee employee, Response response) {
                                     Log.d(LOG_TAG, "New user added.");

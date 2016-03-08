@@ -40,5 +40,5 @@ public interface EmployeesAPI {
     public void postUser(@Body HashMap<String, String> body, Callback<Employee> callback);
 
     @PUT("/user/{id}")
-    public void updateUser(@Body HashMap<String, String> body, Callback<Employee> callback);
+    public void updateUser(@Path("id") String id, @Body HashMap<String, String> body, Callback<Employee> callback);
 }
