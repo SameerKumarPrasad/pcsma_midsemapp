@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.projectmitsuki.retrofitexample.API.EmployeesAPI;
 import com.example.projectmitsuki.retrofitexample.model.Employee;
 
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit.Callback;
@@ -178,6 +179,11 @@ public class HomeActivity extends AppCompatActivity {
                             int salary_int = Integer.parseInt(salary);
                             Toast.makeText(getApplicationContext(), name + " " + age + " " + salary + " " , Toast.LENGTH_LONG).show();
 
+                            HashMap<String, String> body = new HashMap<String, String>();
+                            body.put("name", name);
+                            body.put("age", age);
+                            body.put("salary", salary);
+
                             //Creating a rest adapter
                             RestAdapter adapter = new RestAdapter.Builder()
                                     .setEndpoint(MainActivity.ROOT_URL)
@@ -187,7 +193,7 @@ public class HomeActivity extends AppCompatActivity {
                             EmployeesAPI api = adapter.create(EmployeesAPI.class);
 
                             //Defining the method
-                            api.postUser(name, age_int, salary_int, new Callback<Employee>() {
+                            api.postUser( body, new Callback<Employee>() {
 
                                 @Override
                                 public void success(Employee employee, Response response) {

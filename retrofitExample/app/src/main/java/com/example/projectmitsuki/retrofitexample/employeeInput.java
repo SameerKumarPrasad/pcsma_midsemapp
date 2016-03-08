@@ -11,6 +11,8 @@ import com.example.projectmitsuki.retrofitexample.API.EmployeesAPI;
 import com.example.projectmitsuki.retrofitexample.model.Employee;
 import com.google.gson.JsonSyntaxException;
 
+import java.util.HashMap;
+
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -62,9 +64,13 @@ public class employeeInput extends ActionBarActivity {
 
         // "replace email with actual variable"
         String name = "name";
-        int age = 23;
-        int salary = 98;
-        api.postUser(name, age, salary, new Callback<Employee>() {
+        String age = "23";
+        String salary = "98";
+        HashMap<String, String> body = new HashMap<>();
+        body.put("name", name);
+        body.put("age", age);
+        body.put("salary", salary);
+        api.postUser(body , new Callback<Employee>() {
             @Override
             public void success(Employee employee, Response response) {
 
