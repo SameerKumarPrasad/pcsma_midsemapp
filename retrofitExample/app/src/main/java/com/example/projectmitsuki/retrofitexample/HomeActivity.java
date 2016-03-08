@@ -177,6 +177,33 @@ public class HomeActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), name + " " + age + " " + salary + " " , Toast.LENGTH_LONG).show();
 
 
+                            //Creating a rest adapter
+                            RestAdapter adapter = new RestAdapter.Builder()
+                                    .setEndpoint(MainActivity.ROOT_URL)
+                                    .build();
+
+                            //Creating an object of our api interface
+                            EmployeesAPI api = adapter.create(EmployeesAPI.class);
+
+                            HashMap<String, String> body = new HashMap<String, String>();
+                            body.put("name", name);
+                            body.put("age", age);
+                            body.put("salary", salary);
+
+                            //Defining the method
+                            api.postUser( body, new Callback<Employee>() {
+                                @Override
+                                public void success(Employee employee, Response response) {
+                                    Log.d(LOG_TAG, "New user added.");
+                                }
+
+                                @Override
+                                public void failure(RetrofitError error) {
+                                    Log.d(LOG_TAG, "New user failed.");
+                                    error.printStackTrace();
+                                    //you can handle the errors here
+                                }
+                            });
                         }
                     }
                 });
@@ -248,7 +275,7 @@ public class HomeActivity extends AppCompatActivity {
                                     error.printStackTrace();
                                     //you can handle the errors here
                                 }
-                            });*/
+                            });
                         }
                     }
                 });

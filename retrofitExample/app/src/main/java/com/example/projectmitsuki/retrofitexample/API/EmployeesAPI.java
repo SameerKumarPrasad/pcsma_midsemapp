@@ -15,6 +15,7 @@ import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
 import retrofit.http.POST;
+import retrofit.http.PUT;
 import retrofit.http.Path;
 
 
@@ -37,4 +38,7 @@ public interface EmployeesAPI {
 
     @POST("/user/new_user/")
     public void postUser(@Body HashMap<String, String> body, Callback<Employee> callback);
+
+    @PUT("/user/{id}")
+    public void updateUser(@Body HashMap<String, String> body, Callback<Employee> callback);
 }
