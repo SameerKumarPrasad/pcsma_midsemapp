@@ -312,7 +312,7 @@ public class HomeActivity extends AppCompatActivity {
                         if(!value.equalsIgnoreCase("")) {
                             x = Integer.parseInt(value);
                             Toast.makeText(getApplicationContext(), "value is " + x, Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(HomeActivity.this, ShowBookDetails.class);
+                            Intent intent = new Intent(HomeActivity.this, ShowEmployeeDetails.class);
                             intent.putExtra(KEY_EMPLOYEE_ID, x);
                             startActivity(intent);
 

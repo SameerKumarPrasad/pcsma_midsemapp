@@ -14,9 +14,9 @@ import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class ShowBookDetails extends AppCompatActivity {
+public class ShowEmployeeDetails extends AppCompatActivity {
 
-    private final String LOG_TAG = "ShowBookDetails";
+    private final String LOG_TAG = "ShowEmployeeDetails";
     //Defining views
     private TextView textViewBookId;
     private TextView textViewBookName;

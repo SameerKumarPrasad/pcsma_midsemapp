@@ -49,13 +49,13 @@ public class MainActivity extends AppCompatActivity implements ListView.OnItemCl
         listView = (ListView) findViewById(R.id.listViewBooks);
 
         //Calling the method that will fetch data
-        getBooks();
+        getEmployees();
 
         //Setting onItemClickListener to listview
         listView.setOnItemClickListener(this);
     }
 
-    private void getBooks(){
+    private void getEmployees(){
         //While the app fetched data we are displaying a progress dialog
         final ProgressDialog loading = ProgressDialog.show(this,"Fetching Data","Please wait...",false,false);
 
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements ListView.OnItemCl
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //Creating an intent
-        Intent intent = new Intent(this, ShowBookDetails.class);
+        Intent intent = new Intent(this, ShowEmployeeDetails.class);
 
         //Getting the requested employee from the list
         Employee employee = employees.get(position);
