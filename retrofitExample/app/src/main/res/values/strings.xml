@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">retrofitExample</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name= "welcome"> Welcome to the Demo app! </string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_employee_input">employeeInput</string>
+    <string name="title_activity_home">HomeActivity</string>
+</resources>
