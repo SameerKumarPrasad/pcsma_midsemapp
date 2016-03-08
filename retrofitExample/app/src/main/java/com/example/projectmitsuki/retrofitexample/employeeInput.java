@@ -64,7 +64,7 @@ public class employeeInput extends ActionBarActivity {
         String name = "name";
         int age = 23;
         int salary = 98;
-        api.postUser(name, age, salary, new Callback<Employee>() {
+        /*api.postUser(name, age, salary, new Callback<Employee>() {
             @Override
             public void success(Employee employee, Response response) {
 
@@ -80,7 +80,7 @@ public class employeeInput extends ActionBarActivity {
                 }
 
             }
-        });
+        });*/
 
     }
 }

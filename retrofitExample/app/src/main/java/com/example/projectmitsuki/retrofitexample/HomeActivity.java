@@ -64,6 +64,27 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(),"Send request to delete" , Toast.LENGTH_LONG).show();
+                //Creating a rest adapter
+                RestAdapter adapter = new RestAdapter.Builder()
+                        .setEndpoint(MainActivity.ROOT_URL)
+                        .build();
+
+                //Creating an object of our api interface
+                EmployeesAPI api = adapter.create(EmployeesAPI.class);
+
+                //Defining the method
+                api.deleteAllUser(new Callback<Employee>() {
+
+                    @Override
+                    public void success(Employee employee, Response response) {
+                        Log.d(LOG_TAG, "You just deleted everything");
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        //you can handle the errors here
+                    }
+                });
             }
         });
     }
@@ -86,6 +107,28 @@ public class HomeActivity extends AppCompatActivity {
                         if(!value.equalsIgnoreCase("")) {
                             x = Integer.parseInt(value);
                             Toast.makeText(getApplicationContext(), "value is " + x, Toast.LENGTH_LONG).show();
+
+                            //Creating a rest adapter
+                            RestAdapter adapter = new RestAdapter.Builder()
+                                    .setEndpoint(MainActivity.ROOT_URL)
+                                    .build();
+
+                            //Creating an object of our api interface
+                            EmployeesAPI api = adapter.create(EmployeesAPI.class);
+
+                            //Defining the method
+                            api.deleteUser(String.valueOf(x), new Callback<Employee>() {
+
+                                @Override
+                                public void success(Employee employee, Response response) {
+                                    Log.d(LOG_TAG, "User deleted");
+                                }
+
+                                @Override
+                                public void failure(RetrofitError error) {
+                                    //you can handle the errors here
+                                }
+                            });
 
                         }
                     }
@@ -186,7 +229,7 @@ public class HomeActivity extends AppCompatActivity {
                             //Creating an object of our api interface
                             EmployeesAPI api = adapter.create(EmployeesAPI.class);
 
-                            //Defining the method
+/*                            //Defining the method
                             api.postUser(name, age_int, salary_int, new Callback<Employee>() {
 
                                 @Override
@@ -200,7 +243,7 @@ public class HomeActivity extends AppCompatActivity {
                                     error.printStackTrace();
                                     //you can handle the errors here
                                 }
-                            });
+                            });*/
                         }
                     }
                 });

@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements ListView.OnItemCl
     public static final String KEY_EMPLOYEE_NAME = "key_book_name";
     public static final String KEY_EMPLOYEE_AGE = "key_book_price";
     public static final String KEY_EMPLOYEE_SALARY = "key_book_stock";
+    private static final String LOG_TAG = "MainActivity";
 
     //List view to show data
     private ListView listView;
@@ -90,20 +92,25 @@ public class MainActivity extends AppCompatActivity implements ListView.OnItemCl
 
     //Our method to show list
     private void showList(){
-        //String array to store all the book names
-        String[] items = new String[employees.size()];
+        try {
+            //String array to store all the book names
+            String[] items = new String[employees.size()];
 
-        //Traversing through the whole list to get all the names
-        for(int i=0; i< employees.size(); i++){
-            //Storing names to string array
-            items[i] = employees.get(i).getName();
+
+            //Traversing through the whole list to get all the names
+            for (int i = 0; i < employees.size(); i++) {
+                //Storing names to string array
+                items[i] = employees.get(i).getName();
+            }
+
+            //Creating an array adapter for list view
+            ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.simple_list, items);
+
+            //Setting adapter to listview
+            listView.setAdapter(adapter);
+        } catch (NullPointerException e) {
+            Log.d(LOG_TAG, "No user found");
         }
-
-        //Creating an array adapter for list view
-        ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.simple_list,items);
-
-        //Setting adapter to listview
-        listView.setAdapter(adapter);
     }
 
 

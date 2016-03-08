@@ -9,6 +9,7 @@ import java.util.List;
 
 import retrofit.Callback;
 import retrofit.http.Body;
+import retrofit.http.DELETE;
 import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
@@ -27,7 +28,15 @@ public interface EmployeesAPI {
     @GET("/user/{id}/")
     public void getUserInfo(@Path("id") String id, Callback<Employee> response);
 
+/*
     @FormUrlEncoded
     @POST("/user/new_user/")
     public void postUser(@Body(), Callback<Employee> callback);
+*/
+
+    @DELETE("/user/{id}/")
+    public void deleteUser(@Path("id") String id, Callback<Employee> response);
+
+    @DELETE("/user/")
+    public void deleteAllUser(Callback<Employee> response);
 }
